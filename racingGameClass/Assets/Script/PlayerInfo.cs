@@ -11,7 +11,7 @@ public class PlayerInfo : MonoBehaviour
     float fullTime = 8f;
     void Start()
     {
-        hp = MaxHp;
+        InitializeHP();
     }
 
     void Update()
@@ -32,9 +32,14 @@ public class PlayerInfo : MonoBehaviour
         hp = hp < 0 ? 0 : hp;
     }
     
-    public  static void IncreseHp()
+    public static void IncreseHp()
     {
         ++hp;
         hp = hp > MaxHp ? MaxHp : hp;
+    }
+    
+    public static void InitializeHP()
+    {
+        hp = MaxHp;
     }
 }
