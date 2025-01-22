@@ -12,9 +12,6 @@ public class ItemCollsion : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Obstacle"))
         {
-            other.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-            StartCoroutine(CollisionCouroutine(2f));
-            other.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             PlayerInfo.DecreseHp();
         }
         
@@ -23,21 +20,6 @@ public class ItemCollsion : MonoBehaviour
             PlayerInfo.IncreseHp();
         }
         
-        if (other.gameObject.CompareTag("Booster"))
-        {
-            other.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
-            StartCoroutine(CollisionCouroutine(2f));
-            other.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-            ObstacleMove.SpeedUp();
-            StartCoroutine(CollisionCouroutine(2f));
-            ObstacleMove.SpeedInitilaize();
-        }
-        
         Destroy(other.gameObject);
-    }
-    
-    IEnumerator CollisionCouroutine(float time)
-    {
-        yield return new WaitForSeconds(time);
     }
 }

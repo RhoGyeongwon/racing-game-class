@@ -1,12 +1,14 @@
+using TMPro;
 using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour
 {
+    [SerializeField] private TextMeshProUGUI hpText;
     public static int hp { get; private set; }
     public const int MaxHp = 5;
 
     float currentTime = 0f;
-    float fullTime = 4f;
+    float fullTime = 8f;
     void Start()
     {
         hp = MaxHp;
@@ -14,6 +16,7 @@ public class PlayerInfo : MonoBehaviour
 
     void Update()
     {
+        hpText.text = $"HP : {hp.ToString()}";
         currentTime += Time.deltaTime;
         
         if (currentTime > fullTime)

@@ -17,14 +17,4 @@ public class ObstacleMove : MonoBehaviour
             transform.position = new Vector2(transform.position.x, 6);
         }
     }
-
-    public static void SpeedUp()
-    {
-        speed = -20f;
-    }
-    
-    public static void SpeedInitilaize()
-    {
-        speed = -10f;
-    }
 }
