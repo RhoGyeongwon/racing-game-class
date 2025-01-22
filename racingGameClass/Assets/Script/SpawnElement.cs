@@ -11,7 +11,7 @@ using Vector3 = UnityEngine.Vector3;
 public class SpawnElement : MonoBehaviour
 {
     public GameObject[] itemPrefab = new GameObject[3];
-    List<GameObject> itemObjects = new List<GameObject>(3);
+    public List<GameObject> itemObjects = new List<GameObject>(3);
     List<Vector2> posList = new List<Vector2>(3);
     int[] randomNumList = new int[3];
     
@@ -35,13 +35,6 @@ public class SpawnElement : MonoBehaviour
         posList.Add(middlepos);
         posList.Add(rightpos);
 
-        for (int i = 0; i < posList.Count; i++) //초기화
-        {
-            GameObject obj = Instantiate(itemPrefab[i], Vector3.zero, Quaternion.identity);
-            itemObjects.Add(obj);
-            itemObjects[i].transform.parent = this.transform;
-        }
-        
         for (int i = 0; i < posList.Count; i++)
         {
             randomNumList[i] = Random.Range(0, 2);
@@ -51,7 +44,6 @@ public class SpawnElement : MonoBehaviour
                 itemObjects[i].SetActive(true);
                 RandomNum = Random.Range(0, itemPrefab.Length);
                 itemObjects[i] = itemPrefab[RandomNum];
-                itemObjects[i].transform.localPosition = posList[0];
             }
             else
             {
@@ -76,7 +68,7 @@ public class SpawnElement : MonoBehaviour
                     itemObjects[i].SetActive(true);
                     RandomNum = Random.Range(0, itemPrefab.Length);
                     itemObjects[i] = itemPrefab[RandomNum];
-                    itemObjects[i].transform.position = posList[i];
+                    Debug.Log(itemObjects[i].name);
                 }
                 else
                 {
