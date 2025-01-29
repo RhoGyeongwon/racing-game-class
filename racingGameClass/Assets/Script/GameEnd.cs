@@ -7,5 +7,6 @@ public class GameEnd : MonoBehaviour
     public void OnClickGameEnd()
     {
         Application.Quit();
+        //
     }
 }
