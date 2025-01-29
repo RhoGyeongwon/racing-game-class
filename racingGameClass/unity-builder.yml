@@ -24,9 +24,10 @@ jobs:
           lfs: true
       - uses: actions/cache@v3
         with:
-          path: Library
-          key: Library-${{ matrix.targetPlatform }}
-          restore-keys: Library-
+        path: Library
+        key: Library-${{ runner.os }}-${{ github.sha }}
+        restore-keys: |
+          Library-${{ runner.os }}-
       - if: matrix.targetPlatform == 'Android'
         uses: jlumbroso/free-disk-space@v1.3.1
       - uses: game-ci/unity-builder@v4
